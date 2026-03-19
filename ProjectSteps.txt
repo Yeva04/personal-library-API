@@ -1,0 +1,29 @@
+Choose a (project topic and Create New Node.js Project (Fresh Repo) by running no 2-4 below)
+initiate node in terminal i.e run "npm init -y"
+then run "npm install express dotenv mongoose swagger-jsdoc swagger-ui-express express-validator 
+run npm install --save-dev nodemon
+
+Step2: Update package.json scripts
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+}
+
+step3: Create .gitignore folder in project then ignore the files below
+node_modules/
+.env
+
+step4: Create .env (local only – never commit), put the details below in .env
+PORT=3000
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+DB_NAME=libraryDB
+
+step5: Create New Database in MongoDB Atlas
+Go to your existing Atlas account.
+Create new database: libraryDB (or your name)
+Create two empty collections: books and authors
+(Optional) Add 3–5 sample documents via Atlas UI or Compass so you can test GET early.
+
+
+
+
