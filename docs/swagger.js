@@ -8,7 +8,7 @@ const options = {
     info: {
       title: 'Personal Library API',
       version: '1.0.0',
-      description: 'CRUD API for managing books and authors',
+      description: 'CRUD API for managing books and authors with OAUth authentication',
     },
     servers: [
       {
@@ -19,11 +19,29 @@ const options = {
         url: 'https://library-api-fwts.onrender.com',
         description: 'Production Server'
       }
-    ]
-  },
-  apis: [path.join(__dirname, '../routes/*.js')] // ✅ correct path
+    ],
+
+    components: { 
+      securitySchemes: { 
+        cookieAuth: {
+           type: 'apiKey', 
+           in: 'cookie', 
+           name: 'connect.sid' 
+          } 
+        } 
+      },
+
+      //GLOBAL SECURITY (applies to all endpoints unless overridden) 
+      security: [ 
+        { 
+          cookieAuth: [] 
+        } 
+      ] 
+    },
+
+  apis: [path.join(__dirname, '../routes/*.js')]
 };
 
 const swaggerSpec = swaggerJsdoc(options);
 
-module.exports = swaggerSpec; // ✅ correct export
+module.exports = swaggerSpec; 
